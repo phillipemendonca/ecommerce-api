@@ -1,33 +1,38 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.4.2'
-	id 'io.spring.dependency-management' version '1.1.7'
+    id 'java'
+    id 'org.springframework.boot' version '3.4.2'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'com.packages'
-version = '0.0.1-SNAPSHOT'
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(23)
-	}
-}
+group = 'com.packages.ecommerce_api'
+version = '1.0.0'
+sourceCompatibility = '21'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // Dependência para criar API REST
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Dependência para JPA e banco de dados
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Banco de dados em memória H2 para testes
+    runtimeOnly 'com.h2database:h2'
+
+    // Dependência para Swagger (OpenAPI)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    // Dependências de Teste
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+
+
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
+
+
